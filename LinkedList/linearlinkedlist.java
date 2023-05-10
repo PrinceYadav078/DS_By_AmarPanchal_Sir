@@ -57,15 +57,70 @@ public class linearlinkedlist {
     void deleteRight() {
         if (root == null) {
             System.out.println("Empty list");
-        } else {
+        }
+         else {
             Node t = root;
-            Node t2 = root;
+            Node t2 = t;
             while (t.next != null) {
                 t2 = t;
                 t = t.next;
             }
-            t2 = t2.next = null;
+            t2.next = null;
+            if(t==root){
+                root=null;
+            }
             System.out.println(t.data + " deleted from rightside");
+        }
+    }
+
+    void insertAt(int e, int index) {
+        if (root == null) {
+            System.out.println("Empty list");
+        } else {
+            Node n = new Node(e);
+            if (index == 0) { // before root left most
+                n.next = root;
+                root = n;
+            } else {
+                Node t = root;
+                while (t != null && index > 1) {
+                    index--;
+                    t = t.next;
+                }
+                if (t == null) {
+                    System.out.println("Index Out of bound ");
+                } else {
+                    n.next = t.next;
+                    t.next = n;
+                }
+            }
+
+        }
+    }
+
+    void deleteElement(int e) {
+        if (root == null) {
+            System.out.println("Empty List");
+        } else {
+            Node t = root;
+            Node t2 = t;
+            while (t != null && t.data != e) {
+                t2 = t;
+                t = t.next;
+            }
+            if (t == null) {
+                System.out.println("Element Not Found");
+            } else {
+                System.out.println("Element Found");
+                if (t == root) { // leftmost
+                    root = root.next;
+                } else if (t.next == null) { // rightmost
+                    t2.next = null;
+                } else { // inbetween
+                    t2.next = t.next;
+                }
+                System.out.println(t.data + " Deleted");
+            }
         }
     }
 
@@ -75,7 +130,7 @@ public class linearlinkedlist {
         } else {
             Node t = root;
             while (t != null) {
-                System.out.println(t.data);
+                System.out.print(t.data+"=>");
                 t = t.next;
             }
         }
@@ -105,7 +160,7 @@ public class linearlinkedlist {
 
         do {
             System.out.println(
-                    "\n1.Insert Left\n2.Insert Right\n3.Delete Left\n4.Delete Right\n5.Print all\n6.Search\n0.Exit\n:");
+                    "\n1.Insert Left\n2.Insert Right\n3.Delete Left\n4.Delete Right\n5.Print all\n6.Search \n7InsertAt\n8Delete_Element\n0.Exit\n:");
             ch = scn.nextInt();
             switch (ch) {
                 case 1:
@@ -131,6 +186,18 @@ public class linearlinkedlist {
                     System.out.println("Enter Element");
                     e = scn.nextInt();
                     obj.searchList(e);
+                    break;
+                case 7:
+                    System.out.println("Enter element");
+                    e = scn.nextInt();
+                    System.out.println("enter index");
+                    int index = scn.nextInt();
+                    obj.insertAt(e, index);
+                    break;
+                case 8:
+                    System.out.println("Enter element");
+                    e = scn.nextInt();
+                    obj.deleteElement(e);
                     break;
                 default:
                     System.out.println("Wrong option");
