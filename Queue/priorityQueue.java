@@ -60,7 +60,7 @@ public class priorityQueue {
         int ch, e;
         System.out.println("Enter size of queue");
         int size = scn.nextInt();
-        linearQueue lque = new linearQueue();
+        priorityQueue lque = new priorityQueue();
         lque.createqueue(size);
 
         do {

@@ -16,7 +16,7 @@ public class Doubly_Linear_Linkedlist {
     }
 
     void insertLeft(int e){
-        DNode n=new DNode(e);
+        DNode n=new DNode(e);    
         if(root==null){
             root=n;
         }else{
