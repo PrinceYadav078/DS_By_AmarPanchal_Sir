@@ -14,7 +14,9 @@ class TNode {
 
 public class Tree_ex {
     private TNode root;
-    static int count;
+    static int count = 0;
+    int res = 0;
+    boolean done = true;
 
     Tree_ex() {
         root = null;
@@ -62,8 +64,20 @@ public class Tree_ex {
             Leaf_Node_Count(r.left);
             if (r.left == null && r.right == null) {
                 Tree_ex.count++;
+                System.out.print(r.key + "=>");
             }
             Leaf_Node_Count(r.right);
+        }
+    }
+
+    void Search(TNode r, int key) {
+        if (r != null && done) {
+            Search(r.left, key);
+            if (r.key == key) {
+                res = 1;
+                done = false;
+            }
+            Search(r.right, key);
         }
     }
 
@@ -72,7 +86,7 @@ public class Tree_ex {
         int ch, key;
         Scanner scn = new Scanner(System.in);
         do {
-            System.out.println("\n1.insert\n2print\n3.Node Count\n4.Leaf Node Count\n0.exit");
+            System.out.println("\n1.insert\n2print\n3.Node Count\n4.Leaf Node Count\n5.Search\n0.exit");
             ch = scn.nextInt();
             switch (ch) {
                 case 1:
@@ -94,6 +108,22 @@ public class Tree_ex {
                     tobj.Leaf_Node_Count(tobj.root);
                     System.out.println("Total Leaf Node =>" + Tree_ex.count);
                     Tree_ex.count = 0;
+                    break;
+                case 5:
+                    System.out.println("Enter Key");
+                    int val = scn.nextInt();
+                    tobj.Search(tobj.root, val);
+                    if (tobj.res == 1) {
+                        System.out.println("Found");
+                        tobj.res = 0;
+                        tobj.done = true;
+
+                    } else if (tobj.root == null) {
+                        System.out.println("Tree Empty");
+                    } else {
+                        System.out.println("Not Found");
+                    }
+
                     break;
                 case 0:
                     break;
