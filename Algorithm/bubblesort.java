@@ -1,11 +1,15 @@
 package Algorithm;
 import java.util.Scanner;
+import java.util.Random;
+import java.math.*;
 public class bubblesort {
     public static void inputarr(int[]arr){
         Scanner scn = new Scanner(System.in);
         for(int i=0; i<arr.length;i++){
-            System.out.println("Enter "+(i+1)+" Elements");
-            arr[i]=scn.nextInt();
+            Random r =new Random();
+            // System.out.println("Enter "+(i+1)+" Elements");
+            arr[i]=r.nextInt(100);
+            
         }
     }
     public static void BubbleSort(int[]arr){
