@@ -2,7 +2,7 @@ package Practice;
 
 import java.util.Scanner;
 
-public class insertion_Sort {
+public class bubblesort {
     Scanner scn = new Scanner(System.in);
 
     void inputarr(int[] arr) {
@@ -12,34 +12,31 @@ public class insertion_Sort {
         }
     }
 
-    void Inser_Sort(int[] arr) {
+    void BubbleSort(int[] arr) {
         for (int i = 0; i < arr.length-1; i++) {
-            int new_ele = arr[i + 1];
-            int j = i + 1;
-            while (j > 0 && arr[j - 1] > new_ele) {
-                arr[j] = arr[j - 1];
-                j--;
+            for (int j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int t = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = t;
+                }
             }
-            arr[j] = new_ele;
         }
-
     }
-
     void printarr(int[] arr) {
         System.out.println("After Sorting");
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + "=>");
         }
     }
-
-    public static void main(String[] args) {
+    public static void main(String[]args){
         Scanner scn = new Scanner(System.in);
-        insertion_Sort obj = new insertion_Sort();
+        bubblesort obj = new bubblesort();
         System.out.println("Enter size of array");
         int n = scn.nextInt();
         int[] arr = new int[n];
         obj.inputarr(arr);
-        obj.Inser_Sort(arr);
+        obj.BubbleSort(arr);
         obj.printarr(arr);
     }
 }

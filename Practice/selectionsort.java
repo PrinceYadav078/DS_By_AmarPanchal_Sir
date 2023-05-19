@@ -1,6 +1,7 @@
 package Practice;
 
 import java.util.Scanner;
+
 public class selectionsort {
     Scanner scn = new Scanner(System.in);
 
@@ -12,17 +13,18 @@ public class selectionsort {
     }
 
     void Sel_Sort(int[] arr) {
+        int min, pos;
         for (int i = 0; i < arr.length - 1; i++) {
-            int min = arr[i];
-            int pos = i;
+            min = arr[i];
+            pos = i;
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] < min) {
                     min = arr[j];
                     pos = j;
                 }
             }
-            arr[pos] = arr[i];
-            arr[i] = min;
+            arr[pos]=arr[i];
+            arr[i]=min;
         }
     }
 
